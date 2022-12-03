@@ -1,0 +1,13 @@
+.BeersPage img {
+    height: 200px;
+}
+
+.beerImage {
+    width: 120px;
+}
+
+.beerItem {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: solid 1px #666;
+}

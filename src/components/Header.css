@@ -1,0 +1,9 @@
+nav {
+    background-color: #3cc4fc;
+    text-align: center;
+    height: 50px;
+}
+
+nav a {
+    font-size: 36px;
+}
