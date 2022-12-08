@@ -5,41 +5,40 @@ import '../components/Header.css'
 
 const NewBeerPage = () => {
 
-
     const [name, setName] = useState('')
     const [tagline, setTagline] = useState('')
     const [description, setDescription] = useState('')
     const [firstBrewed, setFirstBrewed] = useState('')
-    const [brewedTips, setBrewedTips] = useState('')
+    const [brewerTips, setBrewerTips] = useState('')
     const [attenuationLevel, setAttenuationLevel] = useState(0)
     const [contributedBy, setContributedBy] = useState('')
 
 
     const handleSubmit = e => {
         e.prevent.default()
-    }
 
-    const newBeer = {
-        name,
-        tagline,
-        description,
-        first_brewed: firstBrewed,
-        bewer_tips: brewedTips,
-        attenuation_level: attenuationLevel,
-        contributed_by: contributedBy
-    }
+        const newBeer = {
+            name,
+            tagline,
+            description,
+            first_brewed: firstBrewed,
+            brewers_tips: brewerTips,
+            attenuation_level: attenuationLevel,
+            contributed_by: contributedBy
+        }
 
-    axios.post(`${process.env.REACT_APP_API_URL}/new`, newBeer)
-        .then(response => {
-            setName('')
-            setTagline('')
-            setDescription('')
-            setFirstBrewed('')
-            setBrewedTips('')
-            setAttenuationLevel(0)
-            setContributedBy('')
-        })
-        .catch(err => console.log(err))
+        axios.post(`${process.env.REACT_APP_API_URL}/new`, newBeer)
+            .then(response => {
+                setName('')
+                setTagline('')
+                setDescription('')
+                setFirstBrewed('')
+                setBrewerTips('')
+                setAttenuationLevel(0)
+                setContributedBy('')
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className="NewBeerPage">
@@ -61,16 +60,14 @@ const NewBeerPage = () => {
                         onChange={e => setTagline(e.target.value)}
                     />
                 </div>
-
                 <div>
                     <label htmlFor="description">Description</label>
                     <input
-                        type="description"
-                        value={name}
+                        type="text"
+                        value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
                 </div>
-
                 <div>
                     <label htmlFor="firstBrewed">First Brewed</label>
                     <input
@@ -80,17 +77,17 @@ const NewBeerPage = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="BrewedTips">Brewed Tips</label>
+                    <label htmlFor="BrewerTips">Brewed Tips</label>
                     <input
                         type="text"
-                        value={brewedTips}
-                        onChange={e => setBrewedTips(e.target.value)}
+                        value={brewerTips}
+                        onChange={e => setBrewerTips(e.target.value)}
                     />
                 </div>
                 <div>
                     <label htmlFor="AttenuationLevel">Attenuation Level</label>
                     <input
-                        type="text"
+                        type="number"
                         value={attenuationLevel}
                         onChange={e => setAttenuationLevel(e.target.value)}
                     />
